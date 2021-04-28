@@ -1,38 +1,172 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@400;600&family=Noto+Sans:wght@400;700&display=swap");
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  background-color: #222;
+  color: #fff;
+  font-family: "Montserrat";
+  cursor: default;
+}
+
+.container {
+  border-radius: 16px;
+  border: 1px solid #444;
+  padding: 10px;
+  width: 500px;
+  max-width: 90vw;
+  margin: 50px;
+  display: inline-block;
+  -webkit-box-shadow: inset 9px 9px 0px -7px #414141, inset -8px -8px 0px -7px #505050, -2px -2px 2px 0px rgba(0, 0, 0, 0.2), -10px -10px 7px 2px rgba(0, 0, 0, 0.1), 12px 12px 16px -6px rgba(0, 0, 0, 0.8);
+          box-shadow: inset 9px 9px 0px -7px #414141, inset -8px -8px 0px -7px #505050, -2px -2px 2px 0px rgba(0, 0, 0, 0.2), -10px -10px 7px 2px rgba(0, 0, 0, 0.1), 12px 12px 16px -6px rgba(0, 0, 0, 0.8);
+  background: #444 radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, #444 70%);
+  -o-border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+     border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.3)), to(rgba(0, 0, 0, 0))) 1 100%;
+     border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.container .playingStatus {
+  padding: 10px;
+}
+
+.container .playingStatus p {
+  font-family: "Caveat";
+  font-size: 1.4em;
+  background-color: #fefedf;
+  color: #555;
+  max-width: 210px;
+  padding: 10px;
+  -webkit-transform: rotate(4deg);
+          transform: rotate(4deg);
   text-align: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.1em, #eee), color-stop(0.1em, transparent));
+  background-image: linear-gradient(#eee 0.1em, transparent 0.1em);
+  background-size: 100% 0.5em;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container .playingStatus p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 22px 16px 0;
+  border-style: solid;
+  border-color: #ccc #777;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container .trackInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.container .trackInfo .trackImage {
+  margin-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.container .trackInfo .trackImage img {
+  border: 1px solid #777;
+  -webkit-box-shadow: 12px 16px 32px -6px rgba(0, 0, 0, 0.73);
+          box-shadow: 12px 16px 32px -6px rgba(0, 0, 0, 0.73);
+  -webkit-transform: rotate(-2deg);
+          transform: rotate(-2deg);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.container .trackInfo .trackImage img:hover {
+  -webkit-transform: rotate(-4deg);
+          transform: rotate(-4deg);
+}
+
+.container .trackInfo .trackDetails {
+  padding: 5px 10px;
+  overflow: hidden;
+}
+
+.container .trackInfo .trackDetails .detailHeader {
+  padding-bottom: 5px;
+  font-size: 0.8em;
+}
+
+.container .trackInfo .trackDetails .scrollText {
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  -webkit-animation: 10s linear 0s infinite alternate move;
+          animation: 10s linear 0s infinite alternate move;
+  min-width: 100%;
+}
+
+@-webkit-keyframes move {
+  0%,
+  25% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    margin-left: 0%;
   }
-  to {
-    transform: rotate(360deg);
+  75%,
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    margin-left: 100%;
   }
 }
+
+@keyframes move {
+  0%,
+  25% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    margin-left: 0%;
+  }
+  75%,
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    margin-left: 100%;
+  }
+}
+
+.container .trackInfo .trackDetails .trackName {
+  font-weight: 600;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
+.container .trackInfo .trackDetails .trackArtist {
+  margin-bottom: 15px;
+}
+
+.container .recentTracks {
+  padding: 20px 10px 5px 10px;
+  font-size: 0.8em;
+}
+
+.container .recentTracks .recentItem {
+  padding: 5px 10px;
+  line-height: 1.5;
+}
+
+.container .recentTracks .recentItem .recentName {
+  font-weight: 600;
+}
+
+.container .recentTracks .recentItem .recentDate {
+  font-size: 0.75em;
+}
+/*# sourceMappingURL=App.css.map */
