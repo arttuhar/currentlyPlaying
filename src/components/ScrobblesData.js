@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faUser, faRecordVinyl } from '@fortawesome/free-solid-svg-icons';
+import { faMusic, faUser, faRecordVinyl, faClock } from '@fortawesome/free-solid-svg-icons';
 
 export const ScrobblesData = ({ userName, apiKey }) => {
     const [scrobbles, updateScrobbles] = useState({});
@@ -15,13 +15,14 @@ export const ScrobblesData = ({ userName, apiKey }) => {
                 throw new Error('error');
             })
             .then(data => updateScrobbles(data))
-            .catch(() => updateScrobbles({ error: 'Sumthin went wrong :(' }));
+            .catch(() => updateScrobbles({ error: 'Sumthin went wrong 👀' }));
     });
 
     const resultsData = () => {
         const { error } = scrobbles;
         const track = scrobbles?.recenttracks?.track;
-        console.log(track);
+
+        
         
         // Show error message
         if (error) {
@@ -47,17 +48,17 @@ export const ScrobblesData = ({ userName, apiKey }) => {
         const artist = track[0].artist['#text'];
         const album = track[0].album['#text'];
         const url = track[0].url;
-        
 
         // Check if music is currenly playing and
         // return info about current song
+        // Return a list of three recent tracks
         if (track.length > 0) {
             const trarray = track[0];
             if (trarray['@attr'] && trarray['@attr']['nowplaying']) {
                     return (
                         <div className='container'>
                             <div className='playingStatus'>
-                                    <p>Now playing</p> 
+                                <p>Now playing</p>
                             </div>
                             <div className='trackInfo'>
                                 <div className='trackImage'>
@@ -85,19 +86,19 @@ export const ScrobblesData = ({ userName, apiKey }) => {
                                 <div className='recentItem'>
                                     <p className='recentName'>{track[1].name}</p>
                                     <p>{track[1].artist['#text']}</p>
-                                    <p className='recentDate'>Listened {track[1].date['#text'] + ' UTC+0'}</p>
+                                    <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[1].date['#text'] + ' UTC+0'}</p>
                                 </div>
                                 <hr />
                                 <div className='recentItem'>
                                     <p className='recentName'>{track[2].name}</p>
                                     <p>{track[2].artist['#text']}</p>
-                                    <p className='recentDate'>Listened {track[2].date['#text'] + ' UTC+0'}</p>
+                                    <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[2].date['#text'] + ' UTC+0'}</p>
                                 </div>
                                 <hr />
                                 <div className='recentItem'>
                                     <p className='recentName'>{track[3].name}</p>
                                     <p>{track[3].artist['#text']}</p>
-                                    <p className='recentDate'>Listened {track[3].date['#text'] + ' UTC+0'}</p>
+                                    <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[3].date['#text'] + ' UTC+0'}</p>
                                 </div>
                             </div>
                         </div>
@@ -105,9 +106,10 @@ export const ScrobblesData = ({ userName, apiKey }) => {
             }
         }
 
-        // Return info about recent listened track
+        // Return a list of five recent tracks
         // if music is not currently playing
         return (
+            
             <div className='container'>
                 <div className='playingStatus'>
                     <p>Recently played tracks</p>
@@ -117,31 +119,31 @@ export const ScrobblesData = ({ userName, apiKey }) => {
                     <div className='recentItem'>
                         <p className='recentName'>{track[1].name}</p>
                         <p>{track[1].artist['#text']}</p>
-                        <p className='recentDate'>Listened {track[1].date['#text'] + ' UTC+0'}</p>
+                        <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[1].date['#text'] + ' UTC+0'}</p>
                     </div>
                     <hr />
                     <div className='recentItem'>
                         <p className='recentName'>{track[2].name}</p>
                         <p>{track[2].artist['#text']}</p>
-                        <p className='recentDate'>Listened {track[2].date['#text'] + ' UTC+0'}</p>
+                        <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[2].date['#text'] + ' UTC+0'}</p>
                     </div>
                     <hr />
                     <div className='recentItem'>
                         <p className='recentName'>{track[3].name}</p>
                         <p>{track[3].artist['#text']}</p>
-                        <p className='recentDate'>Listened {track[3].date['#text'] + ' UTC+0'}</p>
+                        <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[3].date['#text'] + ' UTC+0'}</p>
                     </div>
                     <hr />
                     <div className='recentItem'>
                         <p className='recentName'>{track[4].name}</p>
                         <p>{track[4].artist['#text']}</p>
-                        <p className='recentDate'>Listened {track[4].date['#text'] + ' UTC+0'}</p>
+                        <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[4].date['#text'] + ' UTC+0'}</p>
                     </div>
                     <hr />
                     <div className='recentItem'>
                         <p className='recentName'>{track[5].name}</p>
                         <p>{track[5].artist['#text']}</p>
-                        <p className='recentDate'>Listened {track[5].date['#text'] + ' UTC+0'}</p>
+                        <p className='recentDate'><FontAwesomeIcon icon={faClock} /> Listened {track[5].date['#text'] + ' UTC+0'}</p>
                     </div>
                 </div>
             </div>  

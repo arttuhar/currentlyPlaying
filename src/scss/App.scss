@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@400;600&family=Noto+Sans:wght@400;700&display=swap");
+
+// Utilities
+@import "utils/variables";
+
+// Base styles
+@import "base/root";
+
+// Layout styles
+@import "layout/scrobbler";
+
+// Body styles
+body {
+	height: 100vh;
+	display: grid;
+	place-content: center;
+	background-color: #242424;
+	color: #fff;
+	font-family: "Montserrat";
+	cursor: default;
+
+	@media screen and (max-width: $mobileSize) {
+		display: flex;
+		padding-top: 25px;
+	}
+}

@@ -1,13 +1,13 @@
 import React from 'react';
 import ScrobblesData from './components/ScrobblesData';
-import './App.scss';
+import './scss/App.scss';
 
 function App() {
   return (
     <div className="App">
       <ScrobblesData
-        userName={LASTFM_USERNAME}
-        apiKey={LASTFM_APIKEY}
+        userName={'YOUR_USERNAME'}
+        apiKey={'YOUR_APIKEY'}
       />
     </div>
   );
